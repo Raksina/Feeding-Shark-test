@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feeding Shark</title>
+    <style>
+        body{
+            margin:40px;
+            text-align: center;
+            background-image: url(images/underwater.png);
+            background-position: 0% 0%;
+            background-repeat: no-repeat;
+            background-color: #04091e;
+            /*background-size: 20%;*/
+            /*background-size: cover;*/
+            min-height: 100%; /*ทำให้เวลาพื้นหลังแล้วมันสูงเต็มหน้าจอ*/
+            animation: bg 20s infinite linear;
+
+        }
+        @keyframes bg{
+            from{background-position: 0% 0%}
+            to{background-position: 100% 0%}
+        }
+        .button {
+          display: inline-block;
+          border-radius: 15px;
+          background-color: #286381;
+          border: none;
+          color: #ffffff;
+          text-align: center;
+          font-family: fantasy;
+          font-size: 28px;
+          padding: 20px;
+          width: 200px;
+          cursor: pointer;
+          margin: 5px;
+        }
+        
+        .center {
+            text-align: center;
+            margin-top: 1em;
+        }
+        h1 {
+            font-family: fantasy;
+            font-size: 200px;
+            color: #ffffff;
+        }
+</style>
+</head>
+<body>
+
+    <div class="center">
+        <br></br>
+        <h1>GAME OVER!</h1>
+        <a href="index.html" class="button" style="vertical-align:middle"><span>Restart</span></a>
+    </div>
+
+</body>
+</html>
