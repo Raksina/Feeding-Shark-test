@@ -18,7 +18,7 @@ var style = document.createElement('style');
   body{
     background-image: url(images/underwater2.png);
     background-color: #04091e;
-    background-position: 0% 0%;
+    background-position: 8% 9%;
     background-repeat: repeat-x;
 }
 
@@ -31,35 +31,35 @@ var style = document.createElement('style');
 var gap = 85;
 var constant;
 
-var bX = 10;
-var bY = 150;
+var sX = 10;
+var sY = 150;
 
 var gravity = 1;
 
 var score = 0;
 
-// audio files
+// sound
 
-var fly = new Audio();
+var swim = new Audio();
 var scor = new Audio();
 
-fly.src = "sounds/water.mp3";
+swim.src = "sounds/water.mp3";
 scor.src = "sounds/eat.mp3";
 
-// on key down
+// shark move
 
 document.addEventListener("keydown",moveUp);
 
 function moveUp(){
-    bY -= 30;
-    fly.play();
+    sY -= 30;
+    swim.play();
 }
 
-// pipe coordinates
+// fish coordinates
 
-var pipe = [];
+var food = [];
 
-pipe[0] = {
+food[0] = {
     x : cvs.width,
     y : 0
 };
@@ -73,15 +73,15 @@ function draw(){
     ctx.drawImage(bg,0,0);
     
     
-    for(var i = 0; i < pipe.length; i++){
+    for(var i = 0; i < food.length; i++){
         
         constant = gap;
-        ctx.drawImage(fish,pipe[i].x,pipe[i].y+constant);
+        ctx.drawImage(fish,food[i].x,food[i].y+constant);
              
-        pipe[i].x--;
+        food[i].x--;
         
-        if( pipe[i].x == 1100 ){
-            pipe.push({
+        if( food[i].x == 1100 ){
+            food.push({
                 x : cvs.width,
                 y : Math.floor(Math.random()*bg.height)-fg.height
             }); 
@@ -90,13 +90,13 @@ function draw(){
 
         // detect collision
         
-        if(bY + shark.height >=  cvs.height - fg.height){
+        if(sY + shark.height >=  cvs.height - fg.height){
             location.href = "restart.html";
             //location.gameStop();
             
         }
         
-        if(pipe[i].x == shark.height ){
+        if(food[i].x == shark.height ){
             score++;
             scor.play();
         }
@@ -106,9 +106,9 @@ function draw(){
 
     ctx.drawImage(fg,0,cvs.height - fg.height);
     
-    ctx.drawImage(shark,bX,bY);
+    ctx.drawImage(shark,sX,sY);
     
-    bY += gravity;
+    sY += gravity;
     
     ctx.fillStyle = "#FFF";
     ctx.font = "20px Verdana";
