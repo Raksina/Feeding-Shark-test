@@ -83,7 +83,7 @@ function draw(){
         if( food[i].x == 1100 ){
             food.push({
                 x : cvs.width,
-                y : Math.floor(Math.random()*bg.height)-fg.height
+                y : Math.floor(Math.random()*275)
             }); 
         }
 
@@ -99,6 +99,7 @@ function draw(){
         if(food[i].x == shark.height ){
             score++;
             scor.play();
+            //food[i].style.opacity = 0; ใช้ไม่ได้ ฉลามหายแทนปลา
         }
         
         
